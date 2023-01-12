@@ -32,5 +32,6 @@ namespace Tetris
             points[3] = new Point(x, y + 3, symb);
         }
 
+       
     }
 }

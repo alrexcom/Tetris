@@ -15,6 +15,29 @@ namespace Tetris
             Console.SetCursorPosition(x, y);
             Console.WriteLine(c);
         }
+
+        internal void Move(Action dir)
+        {
+            switch (dir)
+            {
+                case Action.left:
+                    x -= 1;
+                    break;
+                case Action.right:
+                    x += 1;
+                    break;
+                case Action.down:
+                    y += 1;
+                    break;               
+            }
+        }
+
+        internal void Hide()
+        {
+            Console.SetCursorPosition(x, y);
+            Console.WriteLine(" ");
+        }
+
         public Point(int x, int y, char symv)
         {
             this.x = x;

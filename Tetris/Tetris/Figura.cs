@@ -17,5 +17,25 @@ namespace Tetris
                 item.Draw();
             }
         }
+
+        public void Move(Action dir)
+        {
+            Hide();
+            foreach (var item in points)
+            {
+                item.Move(dir);
+            }
+            Draw();
+        }
+
+        public void Hide()
+        {
+            Thread.Sleep(500);
+            foreach (var item in points)
+            {                
+                item.Hide();
+            }
+           
+        }
     }
 }
