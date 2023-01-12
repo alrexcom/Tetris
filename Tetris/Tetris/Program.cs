@@ -1,15 +1,14 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.Drawing;
+
 Console.SetWindowSize(40, 30);
 Console.SetBufferSize(40,30);
 
+Tetris.Point p1 = new Tetris.Point();
+p1.x = 2; p1.y = 3;
+p1.c = '*';
 
-Draw(2, 3, '*');
-Draw(5, 10, '#');
+p1.Draw();
 
-Console.ReadLine();      
 
-static void Draw(int x, int y, char c)
-{
-    Console.SetCursorPosition(x, y);
-    Console.WriteLine(c);
-}
+Console.ReadLine(); 
