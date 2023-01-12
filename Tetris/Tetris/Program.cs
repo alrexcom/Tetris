@@ -5,13 +5,10 @@ using Tetris;
 Console.SetWindowSize(40, 30);
 Console.SetBufferSize(40,30);
 
-Tetris.Point p1 = new (2,3,'#');
+Square s = new Square(3, 6, '#');
+s.Draw();
 
-p1.Draw();
-
-
-Tetris.Point p2 = new(20, 10, '*');
-
-p2.Draw();
+Stick l = new Stick(8, 10, '*');
+l.Draw();
 
 Console.ReadLine(); 
