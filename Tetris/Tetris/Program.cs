@@ -6,10 +6,10 @@ using Action = Tetris.Action;
 Console.SetWindowSize(40, 30);
 Console.SetBufferSize(40,30);
 
-Figure l = new Stick(8, 10, '=');
-//Figure l = new Square(8, 10, '#');
+Figure l = new Stick(8, 10, '|');
+Figure s = new Square(15, 15, 'O');
 l.Draw();
- 
+s.Draw();
 l.Move(Action.left);
 
 l.Move(Action.down);
@@ -28,6 +28,27 @@ l.Move(Action.down);
 l.Hide();
 l.Rotate();
 l.Draw();
+
+
+
+
+
+s.Move(Action.down);
+s.Move(Action.right);
+s.Move(Action.right);
+s.Move(Action.down);
+s.Move(Action.down);
+s.Move(Action.down);
+s.Move(Action.right);
+s.Move(Action.right);
+s.Move(Action.left);
+s.Move(Action.down);
+
+
+
+
+
+
 //Figure[] f = new Figure[2];
 //f[0] = new Square(3, 6, '#');
 //f[1] = new Stick(8, 10, '*');
