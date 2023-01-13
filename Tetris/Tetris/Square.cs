@@ -17,6 +17,7 @@ namespace Tetris
             points[1] = new Point(x+1,y,symb);
             points[2] = new Point(x,y+1,symb);
             points[3] = new Point(x+1,y+1,symb);
+            Draw();
         }
         public override void Rotate()
         {
@@ -33,9 +34,11 @@ namespace Tetris
             points[1] = new Point(x, y + 1, symb);
             points[2] = new Point(x, y + 2, symb);
             points[3] = new Point(x, y + 3, symb);
+            Draw();
         }
         public override void Rotate()
         {
+            Hide();
             if (points[0].x == points[1].x)
             {
                 RotateHorizontal();
@@ -44,7 +47,7 @@ namespace Tetris
             {
                 RotateVertical();
             }
-
+            Draw();
         }
 
         private void RotateVertical()
