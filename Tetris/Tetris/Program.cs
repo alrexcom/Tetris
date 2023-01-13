@@ -6,8 +6,35 @@ using Action = Tetris.Action;
 Console.SetWindowSize(40, 30);
 Console.SetBufferSize(40,30);
 
-Figure l = new Stick(8, 10, '|');
-Figure s = new Square(15, 15, 'O');
+
+
+
+
+
+
+
+for (int i = 0; i < 10; i++)
+{
+    FigureGenerator generator = new FigureGenerator(15, 2, '+');
+    Figure l = generator.GetNewFigure();
+    l.Draw();
+    l.Move(Action.right);
+    for (int k = 0; k < 15; k++)
+    {
+        if(k%2 == 0)
+        l.Move(Action.down);
+        else
+        {
+            l.Hide();
+            l.Rotate();
+            l.Draw();
+        }        
+    }
+    l.Hide();
+}
+/*
+
+
 l.Draw();
 s.Draw();
 l.Move(Action.left);
@@ -44,7 +71,7 @@ s.Move(Action.right);
 s.Move(Action.left);
 s.Move(Action.down);
 
-
+*/
 
 
 
