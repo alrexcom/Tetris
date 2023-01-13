@@ -30,7 +30,7 @@ namespace Tetris
 
         public void Hide()
         {
-            Thread.Sleep(500);
+            //Thread.Sleep(500);
             foreach (var item in points)
             {                
                 item.Hide();

@@ -6,31 +6,28 @@ using Action = Tetris.Action;
 Console.SetWindowSize(40, 30);
 Console.SetBufferSize(40,30);
 
+FigureGenerator generator = new FigureGenerator(15, 2, '*');
+Figure s;
 
-
-
-
-
-
-
-for (int i = 0; i < 10; i++)
+while(true)
 {
-    FigureGenerator generator = new FigureGenerator(15, 2, '+');
-    Figure l = generator.GetNewFigure();
-    l.Draw();
-    l.Move(Action.right);
+    FigureFall(out s, generator);
+    s.Draw();
+    s.Move(Action.right);
+    s.Draw();
+}
+  
+
+static void FigureFall( out Figure fig, FigureGenerator gen)
+{
+    fig = gen.GetNewFigure();
+    fig.Draw();
     for (int k = 0; k < 15; k++)
     {
-        if(k%2 == 0)
-        l.Move(Action.down);
-        else
-        {
-            l.Hide();
-            l.Rotate();
-            l.Draw();
-        }        
+        fig.Move(Action.down);
+        Thread.Sleep(200);
     }
-    l.Hide();
+    fig.Hide();
 }
 /*
 
@@ -73,18 +70,3 @@ s.Move(Action.down);
 
 */
 
-
-
-
-//Figure[] f = new Figure[2];
-//f[0] = new Square(3, 6, '#');
-//f[1] = new Stick(8, 10, '*');
-
-//foreach (var item in f)
-//{
-//    item.Draw();
-//}
-
-
-
-Console.ReadLine(); 
