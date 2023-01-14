@@ -42,7 +42,7 @@ namespace Tetris
             Hide();
             var clone =  Clone();             
 
-            if (points[0].x == points[1].x)
+            if (points[0].X == points[1].X)
             {
                 RotateHorizontal(clone);
             }
@@ -59,8 +59,8 @@ namespace Tetris
         {
             for (int i = 0; i < Config.POINTCOUNT; i++)
             {
-                p[i].x = p[0].x;
-                p[i].y = p[0].y + i;
+                p[i].X = p[0].X;
+                p[i].Y = p[0].Y + i;
             }
         }
 
@@ -68,8 +68,8 @@ namespace Tetris
         {
             for (int i = 0; i < points.Length; i++)
             {               
-                p[i].y = p[0].y;
-                p[i].x = p[0].x + i;
+                p[i].Y = p[0].Y;
+                p[i].X = p[0].X + i;
             }
         }
     }
