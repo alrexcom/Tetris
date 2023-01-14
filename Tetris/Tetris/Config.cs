@@ -39,6 +39,8 @@ namespace Tetris
             Console.CursorVisible = false;
             Console.SetWindowSize(_width, _height);
             Console.SetBufferSize(_width, _height);
+         //   Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor= ConsoleColor.Green;
         }
 
 
