@@ -3,10 +3,11 @@ using Tetris;
 
 internal class FigureGenerator
 {
-    private int _x; private int _y;
-    private char _symb ;
+    private int _x;
+    private int _y;
+    private char _symb;
     Random rnd = new Random();
-    public FigureGenerator(int x, int y,char symb)
+    public FigureGenerator(int x, int y, char symb)
     {
         _x = x; _y = y; _symb = symb;
     }

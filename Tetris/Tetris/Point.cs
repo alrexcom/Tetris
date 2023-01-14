@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Tetris
 {
-  public  class Point
+    public class Point
     {
         public int X { get; set; }
         public int Y { get; set; }
-        public char C { get; set; }  
-            public void Draw()
+        public char C { get; set; }
+        public void Draw()
         {
-            Console.SetCursorPosition(X, Y);         
+            Console.SetCursorPosition(X, Y);
             Console.WriteLine(C);
             Console.SetCursorPosition(0, 0);
         }
@@ -30,7 +30,7 @@ namespace Tetris
                     break;
                 case Action.down:
                     Y += 1;
-                    break;               
+                    break;
             }
         }
 

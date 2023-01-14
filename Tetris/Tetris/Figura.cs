@@ -9,7 +9,7 @@ namespace Tetris
     abstract class Figure
     {
         //public const int cPointCount = 4;
-        protected Point[] points = new Point[Config.POINTCOUNT];
+        protected Point[] points = new Point[Config.POINTS_COUNT];
 
         public void Draw()
         {
@@ -20,7 +20,7 @@ namespace Tetris
         }
         public void TryMove(Action dir)
         {
-            Hide();            
+            Hide();
             var clone = Clone();
             Move(clone, dir);
             if (VerifyPosition(clone))
@@ -30,11 +30,11 @@ namespace Tetris
         }
 
         public bool VerifyPosition(Point[] pList)
-        
+
         {
             foreach (var item in pList)
             {
-                if (item.X < 0 || item.Y < 0 || item.X >= Config.Width || item.Y >= (Config.Height-1) )
+                if (item.X < 0 || item.Y < 0 || item.X >= Config.Width || item.Y >= (Config.Height - 1))
                     return false;
             }
             return true;
@@ -42,7 +42,7 @@ namespace Tetris
 
         public void Move(Point[] pList, Action dir)
         {
-           foreach (var item in pList)
+            foreach (var item in pList)
             {
                 item.Move(dir);
             }
@@ -50,8 +50,8 @@ namespace Tetris
 
         public Point[] Clone()
         {
-            var newPoints = new Point[Config.POINTCOUNT];
-            for (int i = 0; i < Config.POINTCOUNT; i++)
+            var newPoints = new Point[Config.POINTS_COUNT];
+            for (int i = 0; i < Config.POINTS_COUNT; i++)
             {
                 newPoints[i] = new Point(points[i]);
             }

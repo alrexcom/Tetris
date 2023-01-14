@@ -9,16 +9,16 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Console.CursorVisible = false;
+
         /*
             Console.SetWindowSize(Config.Width, Config.HEIGHT);
             Console.SetBufferSize(Config.Width, Config.HEIGHT);
             Console.CursorVisible = false;
             */
-        Config.Width = 30;
-        Config.Height= 30;
+        Config.Width = 20;
+        Config.Height = 20;
 
-        FigureGenerator generator = new FigureGenerator(Config.Width/2, 0, '*');
+        FigureGenerator generator = new FigureGenerator(Config.Width / 2, 0, '*');
         Figure currentFigure = generator.GetNewFigure();
 
         while (true)

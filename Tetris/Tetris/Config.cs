@@ -17,23 +17,33 @@ namespace Tetris
             set 
             { 
                 _width = value;
-                Console.SetWindowSize(_width,_height);
-                Console.SetBufferSize(_width,_height);
+                Show();    
             }
         }
 
         public static int Height
         {
-            get { return _height; }
-            set {
-                  _height = value;
-                Console.SetWindowSize(_width, _height);
-                Console.SetBufferSize(_width, _height);
+            get 
+            { 
+                return _height; 
+            }
+            set 
+            {
+                _height = value;
+                Show();
             }
         } 
 
+        private static void Show()
+        {
+            Console.CursorVisible = false;
+            Console.SetWindowSize(_width, _height);
+            Console.SetBufferSize(_width, _height);
+        }
+
+
       private static int _width = 30;  
-      public static int _height = 30;  
-      public const int POINTCOUNT = 4;  
+      private static int _height = 30;  
+      public const int POINTS_COUNT = 4;  
     }
 }
