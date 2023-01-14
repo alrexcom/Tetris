@@ -46,10 +46,10 @@ namespace Tetris
             this.Y = y;
             this.C = symv;
         }
-        public Point()
-        {
+        //public Point()
+        //{
 
-        }
+        //}
 
         public Point(Point point)
         {
