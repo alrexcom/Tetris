@@ -13,10 +13,11 @@ internal class FigureGenerator
 
     public Figure GetNewFigure()
     {
+
         if (rnd.Next(0, 2) == 0)
             return new Square(_x, _y, _symb);
         else
             return new Stick(_x, _y, _symb);
-        
+
     }
 }

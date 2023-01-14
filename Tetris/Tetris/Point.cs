@@ -12,8 +12,9 @@ namespace Tetris
       public  char c;
       public void Draw()
         {
-            Console.SetCursorPosition(x, y);
+            Console.SetCursorPosition(x, y);         
             Console.WriteLine(c);
+            Console.SetCursorPosition(0, 0);
         }
 
         internal void Move(Action dir)
@@ -47,7 +48,13 @@ namespace Tetris
         public Point()
         {
 
-        }        
+        }
 
+        public Point(Point point)
+        {
+            this.x = point.x;
+            this.y = point.y;
+            this.c = point.c;
+        }
     }
 }

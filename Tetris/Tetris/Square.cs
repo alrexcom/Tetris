@@ -38,33 +38,38 @@ namespace Tetris
         }
         public override void Rotate()
         {
+            
             Hide();
+            var clone =  Clone();             
+
             if (points[0].x == points[1].x)
             {
-                RotateHorizontal();
+                RotateHorizontal(clone);
             }
             else
             {
-                RotateVertical();
+               RotateVertical(clone);
             }
-            Draw();
-        }
+            if (VerifyPosition(clone))
+                points = clone;
+                Draw();
+        }                   
 
-        private void RotateVertical()
+        private void RotateVertical(Point[] p)
         {
-            for (int i = 0; i < points.Length; i++)
+            for (int i = 0; i < Config.POINTCOUNT; i++)
             {
-                points[i].x = points[0].x;
-                points[i].y = points[0].y + i;
+                p[i].x = p[0].x;
+                p[i].y = p[0].y + i;
             }
         }
 
-        private void RotateHorizontal()
+        private void RotateHorizontal(Point[] p)
         {
             for (int i = 0; i < points.Length; i++)
             {               
-                points[i].y = points[0].y;
-                points[i].x = points[0].x + i;
+                p[i].y = p[0].y;
+                p[i].x = p[0].x + i;
             }
         }
     }
