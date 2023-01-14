@@ -13,7 +13,7 @@ internal class Program
         Console.SetBufferSize(Config.WIDTH, Config.HEIGHT);
         Console.CursorVisible = false;
 
-        FigureGenerator generator = new FigureGenerator(15, 2, '*');
+        FigureGenerator generator = new FigureGenerator(Config.WIDTH/2, 0, '*');
         Figure currentFigure = generator.GetNewFigure();
 
         while (true)

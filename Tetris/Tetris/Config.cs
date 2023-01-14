@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Tetris
 {
-     class Config
+     static class Config
     {
-      public static int WIDTH = 30;  
-      public static int HEIGHT = 30;  
-      public static int POINTCOUNT = 4;  
+      public const int WIDTH = 30;  
+      public const int HEIGHT = 30;  
+      public const int POINTCOUNT = 4;  
     }
 }
