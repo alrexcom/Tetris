@@ -13,10 +13,10 @@ namespace Tetris
 
         public Square(int x, int y, char symb)
         {
-            points[0] = new Point(x, y, symb);
-            points[1] = new Point(x + 1, y, symb);
-            points[2] = new Point(x, y + 1, symb);
-            points[3] = new Point(x + 1, y + 1, symb);
+            Points[0] = new Point(x, y, symb);
+            Points[1] = new Point(x + 1, y, symb);
+            Points[2] = new Point(x, y + 1, symb);
+            Points[3] = new Point(x + 1, y + 1, symb);
             Draw();
         }
         public override void Rotate()
@@ -30,10 +30,10 @@ namespace Tetris
     {
         public Stick(int x, int y, char symb)
         {
-            points[0] = new Point(x, y, symb);
-            points[1] = new Point(x, y + 1, symb);
-            points[2] = new Point(x, y + 2, symb);
-            points[3] = new Point(x, y + 3, symb);
+            Points[0] = new Point(x, y, symb);
+            Points[1] = new Point(x, y + 1, symb);
+            Points[2] = new Point(x, y + 2, symb);
+            Points[3] = new Point(x, y + 3, symb);
             Draw();
         }
         public override void Rotate()
@@ -42,7 +42,7 @@ namespace Tetris
             Hide();
             var clone = Clone();
 
-            if (points[0].X == points[1].X)
+            if (Points[0].X == Points[1].X)
             {
                 RotateHorizontal(clone);
             }
@@ -51,7 +51,7 @@ namespace Tetris
                 RotateVertical(clone);
             }
             if (VerifyPosition(clone))
-                points = clone;
+                Points = clone;
             Draw();
         }
 
@@ -66,7 +66,7 @@ namespace Tetris
 
         private void RotateHorizontal(Point[] p)
         {
-            for (int i = 0; i < points.Length; i++)
+            for (int i = 0; i < Points.Length; i++)
             {
                 p[i].Y = p[0].Y;
                 p[i].X = p[0].X + i;

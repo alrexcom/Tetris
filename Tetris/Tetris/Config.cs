@@ -6,46 +6,67 @@ using System.Threading.Tasks;
 
 namespace Tetris
 {
-     static class Config
+
+    static class Config
     {
+        private static int _width = 30;
+        private static int _height = 30;
+        public const int POINTS_COUNT = 4;
+
         public static int Width
         {
             get
             {
-                return _width;  
+                return _width;
             }
-            set 
-            { 
+            set
+            {
                 _width = value;
-                Show();    
+                Show();
             }
         }
 
         public static int Height
         {
-            get 
-            { 
-                return _height; 
+            get
+            {
+                return _height;
             }
-            set 
+            set
             {
                 _height = value;
                 Show();
             }
-        } 
+        }
 
         private static void Show()
         {
             Console.CursorVisible = false;
             Console.SetWindowSize(_width, _height);
             Console.SetBufferSize(_width, _height);
-         //   Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.ForegroundColor= ConsoleColor.Green;
+            //   Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.Green;
         }
 
+        private static bool[][] _heap;
 
-      private static int _width = 30;  
-      private static int _height = 30;  
-      public const int POINTS_COUNT = 4;  
+        static Config()
+        {
+            _heap = new bool[Height][];
+            for (int i = 0; i < Height; i++)
+            {
+                _heap[i] = new bool[Width];
+            }
+
+        }
+   
+    public static void AddFigure(Figure fig)
+        {
+            foreach (var p in fig.Points)
+            {
+                _heap[p.Y][p.X] = true; 
+            }
+        }
+
     }
 }
