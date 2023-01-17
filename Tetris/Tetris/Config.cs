@@ -39,7 +39,7 @@ namespace Tetris
             }
         }
 
-        private static void Show()
+        public static void Show()
         {
             Console.CursorVisible = false;
             Console.SetWindowSize(_width, _height);
@@ -59,14 +59,20 @@ namespace Tetris
             }
 
         }
-   
-    public static void AddFigure(Figure fig)
+
+        public static void AddFigure(Figure fig)
         {
             foreach (var p in fig.Points)
             {
-                _heap[p.Y][p.X] = true; 
+                _heap[p.Y][p.X] = true;
             }
         }
 
+        //Проверка столкновения фигуры с кучей 
+        public static bool CheckStrike(Point p)
+        {
+            //если столкновения нет то возвращает true
+            return _heap[p.Y][p.X];
+        }
     }
 }

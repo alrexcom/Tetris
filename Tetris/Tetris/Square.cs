@@ -19,12 +19,11 @@ namespace Tetris
             Points[3] = new Point(x + 1, y + 1, symb);
             Draw();
         }
-        public override void Rotate()
+        public override void Rotate(Point[] clone)
         {
 
         }
     }
-
 
     class Stick : Figure
     {
@@ -36,12 +35,8 @@ namespace Tetris
             Points[3] = new Point(x, y + 3, symb);
             Draw();
         }
-        public override void Rotate()
+        public override void Rotate(Point[] clone)
         {
-
-            Hide();
-            var clone = Clone();
-
             if (Points[0].X == Points[1].X)
             {
                 RotateHorizontal(clone);
@@ -49,10 +44,7 @@ namespace Tetris
             else
             {
                 RotateVertical(clone);
-            }
-            if (VerifyPosition(clone))
-                Points = clone;
-            Draw();
+            }    
         }
 
         private void RotateVertical(Point[] p)
@@ -66,7 +58,7 @@ namespace Tetris
 
         private void RotateHorizontal(Point[] p)
         {
-            for (int i = 0; i < Points.Length; i++)
+            for (int i = 0; i < Config.POINTS_COUNT; i++)
             {
                 p[i].Y = p[0].Y;
                 p[i].X = p[0].X + i;

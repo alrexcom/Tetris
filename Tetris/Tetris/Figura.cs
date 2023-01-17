@@ -18,27 +18,54 @@ namespace Tetris
                 item.Draw();
             }
         }
-        public void TryMove(Action dir)
+        internal Result TryMove(Action dir)
         {
             Hide();
             var clone = Clone();
             Move(clone, dir);
-            if (VerifyPosition(clone))
-                Points = clone;
 
+            var result = (VerifyPosition(clone));
+            if (result == Result.SUCCESS)
+                Points = clone;
             Draw();
+
+            return result;
         }
 
-        public bool VerifyPosition(Point[] pList)
+        internal Result TryRotate()
+        {
+            Hide();
+            var clone = Clone();
+            Rotate(clone);
+
+            var result = (VerifyPosition(clone));
+            if (result == Result.SUCCESS)
+                Points = clone;
+            Draw();
+
+            return result;
+        }
+
+        public abstract void Rotate(Point[] clone);
+
+        public Result VerifyPosition(Point[] pList)
 
         {
-            foreach (var item in pList)
+            foreach (var p in pList)
             {
-                if (item.X < 0 || item.Y < 0 || item.X >= Config.Width || item.Y >= (Config.Height - 1))
-                    return false;
+                if (p.Y >= Config.Height - 1)
+                    return Result.BORDER_DOWN_STRICKE;
+
+                if (p.X >= Config.Width || p.X < 0 || p.Y < 0)
+                    return Result.BORDER_STRICKE;
+
+                if (Config.CheckStrike(p))
+                    return Result.HEAP_STRICKE;
             }
-            return true;
+            return Result.SUCCESS;
         }
+
+
 
         public void Move(Point[] pList, Action dir)
         {
@@ -58,15 +85,6 @@ namespace Tetris
             return newPoints;
         }
 
-        //public void Move(Action dir)
-        //{
-        //    Hide();
-        //    foreach (var item in points)
-        //    {
-        //        item.Move(dir);
-        //    }
-        //    Draw();
-        //}
 
         public void Hide()
         {
@@ -78,7 +96,8 @@ namespace Tetris
 
         }
 
-        public abstract void Rotate();
+
+
 
     }
 }
