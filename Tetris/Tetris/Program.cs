@@ -15,8 +15,8 @@ class Program
 
     const int TIMER_INTERVAL = 500;
     static System.Timers.Timer timer;
-    
-    static private Object _lock_object = new Object();  
+
+    static private Object _lock_object = new Object();
 
     static void Main(string[] args)
     {
@@ -73,11 +73,27 @@ class Program
         {
             Config.AddFigure(currentFigure);
             Config.TryDeleteLines();
-            currentFigure = generator.GetNewFigure();
-            return true;
+            if (currentFigure.IsOnTop())
+            {
+                WriteGameOver();
+                timer.Elapsed -= OnTimedEvent;
+                return true;
+            }
+            else
+            {
+
+                currentFigure = generator.GetNewFigure();
+                return true;
+            }
         }
         else
             return false;
+    }
+
+    private static void WriteGameOver()
+    {
+        Console.SetCursorPosition(Config.Width/2, Config.Height/2);
+        Console.WriteLine("К О Н Е Ц  И Г Р Ы");
     }
 
     private static Result HandleKey(Figure f, ConsoleKeyInfo key)

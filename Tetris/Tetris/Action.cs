@@ -8,6 +8,6 @@ namespace Tetris
 {
     enum Action
     {
-        LEFT, RIGHT, DOWN
+        LEFT, RIGHT, DOWN, UP
     }
 }
