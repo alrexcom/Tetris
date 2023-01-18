@@ -5,18 +5,28 @@ using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using Tetris;
 using Action = Tetris.Action;
+using System.Timers;
+using System.ComponentModel.DataAnnotations;
 
-
-internal class Program
+class Program
 {
-    static FigureGenerator generator = null;
+    static Figure currentFigure;
+    static FigureGenerator generator;
+
+    const int TIMER_INTERVAL = 500;
+    static System.Timers.Timer timer;
+    
+    static private Object _lock_object = new Object();  
+
     static void Main(string[] args)
     {
 
         Config.Show();
+
         /* 
-               Console.SetWindowSize(Config.Width, Config.Height);
-               Console.SetBufferSize(Config.Width, Config.Height);
+       Console.SetWindowSize(Config.Width, Config.Height);
+        Console.SetBufferSize(Config.Width, Config.Height);
+              
                Console.CursorVisible = false;
 
                 Config.Width = 20;
@@ -25,17 +35,36 @@ internal class Program
 
         // FigureGenerator generator = new FigureGenerator(Config.Width / 2, 0, '*');
         generator = new FigureGenerator(Config.Width / 2, 0, Drawer.DEFAULT_SYMBOL);
-        Figure currentFigure = generator.GetNewFigure();
+        currentFigure = generator.GetNewFigure();
+        SetTimer();
 
         while (true)
         {
             if (Console.KeyAvailable)
             {
                 var key = Console.ReadKey();
+                Monitor.Enter(_lock_object);
                 var result = HandleKey(currentFigure, key);
                 ProcessResult(result, ref currentFigure);
+                Monitor.Exit(_lock_object);
             }
         }
+    }
+
+    private static void SetTimer()
+    {
+        timer = new System.Timers.Timer(TIMER_INTERVAL);
+        timer.Elapsed += OnTimedEvent;
+        timer.AutoReset = true;
+        timer.Enabled = true;
+    }
+
+    private static void OnTimedEvent(object? sender, ElapsedEventArgs e)
+    {
+        Monitor.Enter(_lock_object);
+        var result = currentFigure.TryMove(Action.DOWN);
+        ProcessResult(result, ref currentFigure);
+        Monitor.Exit(_lock_object);
     }
 
     private static bool ProcessResult(Result result, ref Figure currentFigure)
