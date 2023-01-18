@@ -21,20 +21,9 @@ class Program
     static void Main(string[] args)
     {
 
-        Config.Show();
+        DriverProvider.Driver.InitConfig();
 
-        /* 
-       Console.SetWindowSize(Config.Width, Config.Height);
-        Console.SetBufferSize(Config.Width, Config.Height);
-              
-               Console.CursorVisible = false;
-
-                Config.Width = 20;
-                Config.Height = 20; 13.2. Разбор дз 5:52
-               */
-
-        // FigureGenerator generator = new FigureGenerator(Config.Width / 2, 0, '*');
-        generator = new FigureGenerator(Config.Width / 2, 0, Drawer.DEFAULT_SYMBOL);
+        generator = new FigureGenerator(Config.Width / 2, 0);
         currentFigure = generator.GetNewFigure();
         SetTimer();
 
@@ -75,7 +64,7 @@ class Program
             Config.TryDeleteLines();
             if (currentFigure.IsOnTop())
             {
-                WriteGameOver();
+                DriverProvider.Driver.WriteGameOver();
                 timer.Elapsed -= OnTimedEvent;
                 return true;
             }
@@ -90,16 +79,10 @@ class Program
             return false;
     }
 
-    private static void WriteGameOver()
-    {
-        Console.SetCursorPosition(Config.Width/2, Config.Height/2);
-        Console.WriteLine("К О Н Е Ц  И Г Р Ы");
-    }
+
 
     private static Result HandleKey(Figure f, ConsoleKeyInfo key)
     {
-
-
         switch (key.Key)
         {
             case ConsoleKey.LeftArrow:

@@ -34,8 +34,6 @@ namespace Tetris
         internal Result TryRotate()
         {
             Hide();
-            //var clone = Clone();
-            //Rotate(clone);
             Rotate();
 
             var result = (VerifyPosition());
@@ -91,17 +89,6 @@ namespace Tetris
                 item.Move(dir);
             }
         }
-
-        //public Point[] Clone()
-        //{
-        //    var newPoints = new Point[Config.POINTS_COUNT];
-        //    for (int i = 0; i < Config.POINTS_COUNT; i++)
-        //    {
-        //        newPoints[i] = new Point(Points[i]);
-        //    }
-        //    return newPoints;
-        //}
-
 
         public void Hide()
         {

@@ -19,11 +19,6 @@ namespace Tetris
             {
                 return _width;
             }
-            set
-            {
-                _width = value;
-                Show();
-            }
         }
 
         public static int Height
@@ -32,22 +27,9 @@ namespace Tetris
             {
                 return _height;
             }
-            set
-            {
-                _height = value;
-                Show();
-            }
         }
 
-        public static void Show()
-        {
-            Console.CursorVisible = false;
-            Console.SetWindowSize(_width, _height);
-            Console.SetBufferSize(_width, _height);
-            //   Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.ForegroundColor = ConsoleColor.Green;
-        }
-
+     
         private static bool[][] _heap;
 
         static Config()
@@ -85,7 +67,7 @@ namespace Tetris
                     if (_heap[j][i])
                         counter++;
                 }
-                if(counter == Width)
+                if (counter == Width)
                 {
                     DeleteLine(j);
                     Redraw();
@@ -100,9 +82,9 @@ namespace Tetris
                 for (int i = 0; i < Width; i++)
                 {
                     if (_heap[j][i])
-                        Drawer.DrawPoint(i, j);
+                        DriverProvider.Driver.DrawPoint(i, j);
                     else
-                        Drawer.HidePoint(i, j);
+                        DriverProvider.Driver.HidePoint(i, j);
                 }
 
             }
@@ -110,12 +92,12 @@ namespace Tetris
 
         private static void DeleteLine(int line)
         {
-            for (int j = line; j >= 0; j --)
+            for (int j = line; j >= 0; j--)
             {
                 for (int i = 0; i < Width; i++)
                 {
-                    if(j==0)
-                        _heap[j][i] = false;    
+                    if (j == 0)
+                        _heap[j][i] = false;
                     else
                         _heap[j][i] = _heap[j - 1][i];
                 }

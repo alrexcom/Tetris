@@ -11,12 +11,12 @@ namespace Tetris
     {
 
 
-        public Square(int x, int y, char symb)
+        public Square(int x, int y)
         {
-            Points[0] = new Point(x, y, symb);
-            Points[1] = new Point(x + 1, y, symb);
-            Points[2] = new Point(x, y + 1, symb);
-            Points[3] = new Point(x + 1, y + 1, symb);
+            Points[0] = new Point(x, y);
+            Points[1] = new Point(x + 1, y);
+            Points[2] = new Point(x, y + 1);
+            Points[3] = new Point(x + 1, y + 1);
             Draw();
         }
         public override void Rotate()
@@ -27,12 +27,12 @@ namespace Tetris
 
     class Stick : Figure
     {
-        public Stick(int x, int y, char symb)
+        public Stick(int x, int y)
         {
-            Points[0] = new Point(x, y, symb);
-            Points[1] = new Point(x, y + 1, symb);
-            Points[2] = new Point(x, y + 2, symb);
-            Points[3] = new Point(x, y + 3, symb);
+            Points[0] = new Point(x, y);
+            Points[1] = new Point(x, y + 1);
+            Points[2] = new Point(x, y + 2);
+            Points[3] = new Point(x, y + 3);
             Draw();
         }
         public override void Rotate()

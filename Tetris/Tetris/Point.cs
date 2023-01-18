@@ -13,9 +13,7 @@ namespace Tetris
         public char C { get; set; }
         public void Draw()
         {
-            Console.SetCursorPosition(X, Y);
-            Console.WriteLine(C);
-            Console.SetCursorPosition(0, 0);
+            DriverProvider.Driver.DrawPoint(X, Y);
         }
 
         internal void Move(Action dir)
@@ -31,21 +29,23 @@ namespace Tetris
                 case Action.DOWN:
                     Y += 1;
                     break;
+                case Action.UP:
+                    Y -= 1;
+                    break;
             }
         }
 
         internal void Hide()
         {
-            Console.SetCursorPosition(X, Y);
-            Console.WriteLine(" ");
+            DriverProvider.Driver.HidePoint(X, Y);
         }
 
-        public Point(int x, int y, char symv)
+        public Point(int x, int y)
         {
             this.X = x;
             this.Y = y;
-            this.C = symv;
-        }    
+
+        }
 
         public Point(Point point)
         {
