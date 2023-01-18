@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using Tetris;
 using Action = Tetris.Action;
 
+
 internal class Program
 {
     static FigureGenerator generator = null;
