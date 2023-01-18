@@ -9,8 +9,8 @@ namespace Tetris
 
     static class Config
     {
-        private static int _width = 30;
-        private static int _height = 30;
+        private static int _width = 20;
+        private static int _height = 20;
         public const int POINTS_COUNT = 4;
 
         public static int Width
@@ -73,6 +73,53 @@ namespace Tetris
         {
             //если столкновения нет то возвращает true
             return _heap[p.Y][p.X];
+        }
+
+        public static void TryDeleteLines()
+        {
+            for (int j = 0; j < Height; j++)
+            {
+                int counter = 0;
+                for (int i = 0; i < Width; i++)
+                {
+                    if (_heap[j][i])
+                        counter++;
+                }
+                if(counter == Width)
+                {
+                    DeleteLine(j);
+                    Redraw();
+                }
+            }
+        }
+
+        private static void Redraw()
+        {
+            for (int j = 0; j < Height; j++)
+            {
+                for (int i = 0; i < Width; i++)
+                {
+                    if (_heap[j][i])
+                        Drawer.DrawPoint(i, j);
+                    else
+                        Drawer.HidePoint(i, j);
+                }
+
+            }
+        }
+
+        private static void DeleteLine(int line)
+        {
+            for (int j = line; j >= 0; j --)
+            {
+                for (int i = 0; i < Width; i++)
+                {
+                    if(j==0)
+                        _heap[j][i] = false;    
+                    else
+                        _heap[j][i] = _heap[j - 1][i];
+                }
+            }
         }
     }
 }

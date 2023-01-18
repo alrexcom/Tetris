@@ -23,7 +23,7 @@ internal class Program
                */
 
         // FigureGenerator generator = new FigureGenerator(Config.Width / 2, 0, '*');
-        generator = new FigureGenerator(Config.Width / 2, 0, '*');
+        generator = new FigureGenerator(Config.Width / 2, 0, Drawer.DEFAULT_SYMBOL);
         Figure currentFigure = generator.GetNewFigure();
 
         while (true)
@@ -42,6 +42,7 @@ internal class Program
         if (result == Result.HEAP_STRICKE || result == Result.BORDER_DOWN_STRICKE)
         {
             Config.AddFigure(currentFigure);
+            Config.TryDeleteLines();
             currentFigure = generator.GetNewFigure();
             return true;
         }
@@ -56,17 +57,13 @@ internal class Program
         switch (key.Key)
         {
             case ConsoleKey.LeftArrow:
-                return f.TryMove(Action.left);
-                break;
+                return f.TryMove(Action.LEFT);
             case ConsoleKey.RightArrow:
-                return f.TryMove(Action.right);
-                break;
+                return f.TryMove(Action.RIGHT);
             case ConsoleKey.DownArrow:
-                return f.TryMove(Action.down);
-                break;
+                return f.TryMove(Action.DOWN);
             case ConsoleKey.Spacebar:
                 return f.TryRotate();
-                break;
         }
         return Result.SUCCESS;
     }

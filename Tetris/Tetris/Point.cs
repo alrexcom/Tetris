@@ -22,13 +22,13 @@ namespace Tetris
         {
             switch (dir)
             {
-                case Action.left:
+                case Action.LEFT:
                     X -= 1;
                     break;
-                case Action.right:
+                case Action.RIGHT:
                     X += 1;
                     break;
-                case Action.down:
+                case Action.DOWN:
                     Y += 1;
                     break;
             }
