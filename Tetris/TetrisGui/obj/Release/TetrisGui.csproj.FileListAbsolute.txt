@@ -1,0 +1,16 @@
+C:\pro\Tetris\Tetris\TetrisGui\bin\Release\TetrisGui.exe.config
+C:\pro\Tetris\Tetris\TetrisGui\bin\Release\TetrisGui.exe
+C:\pro\Tetris\Tetris\TetrisGui\bin\Release\TetrisGui.pdb
+C:\pro\Tetris\Tetris\TetrisGui\bin\Release\ComponentModel.dll
+C:\pro\Tetris\Tetris\TetrisGui\bin\Release\LanguageService.dll
+C:\pro\Tetris\Tetris\TetrisGui\bin\Release\SmallBasicLibrary.dll
+C:\pro\Tetris\Tetris\TetrisGui\bin\Release\StringResources.dll
+C:\pro\Tetris\Tetris\TetrisGui\bin\Release\ToolFramework.dll
+C:\pro\Tetris\Tetris\TetrisGui\bin\Release\SmallBasicCompiler.exe
+C:\pro\Tetris\Tetris\TetrisGui\bin\Release\SmallBasicLibrary.xml
+C:\pro\Tetris\Tetris\TetrisGui\obj\Release\TetrisGui.csproj.AssemblyReference.cache
+C:\pro\Tetris\Tetris\TetrisGui\obj\Release\TetrisGui.csproj.SuggestedBindingRedirects.cache
+C:\pro\Tetris\Tetris\TetrisGui\obj\Release\TetrisGui.csproj.CoreCompileInputs.cache
+C:\pro\Tetris\Tetris\TetrisGui\obj\Release\TetrisGui.csproj.CopyComplete
+C:\pro\Tetris\Tetris\TetrisGui\obj\Release\TetrisGui.exe
+C:\pro\Tetris\Tetris\TetrisGui\obj\Release\TetrisGui.pdb
